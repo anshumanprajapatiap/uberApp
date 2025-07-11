@@ -16,10 +16,10 @@ Install Homebrew on Mac
     brew services stop postgresql@14
 ```
 ```shell
-    createdb postgress
+    createdb uberdb
 ```
 ```shell
-    psql -d postgres
+    psql -d uberdb
 ```
 ```shell
    CREATE EXTENSION postgis;
