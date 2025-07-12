@@ -42,13 +42,18 @@ public class RiderServiceImpl implements RiderService {
         double fare = rideStrategyManager.getRideFareCalculationStrategy().calculateFare(rideRequest);
         rideRequest.setFare(fare);
 
-//        RideRequest savedRideRequest = rideRequestRepository.save(rideRequest);
+        RideRequest savedRideRequest = rideRequestRepository.save(rideRequest);
+        log.info("Ride request created with ID: {}", savedRideRequest.getId());
 
-        List<Driver> drivers = rideStrategyManager.getDriverMatchingStrategy(rider.getRating()).findMatchingDriver(rideRequest);
 
+        List<Driver> drivers = rideStrategyManager.getDriverMatchingStrategy(rider.getRating()).findMatchingDriver(savedRideRequest);
+        if (drivers.isEmpty()) {
+            log.warn("No drivers available for the ride request.");
+            throw new ResourceNotFoundException("No drivers available for the ride request.");
+        }
         // TODO : Send notification to all the drivers about this ride request
 
-        return modelMapper.map(rideRequest, RideRequestDto.class);
+        return modelMapper.map(savedRideRequest, RideRequestDto.class);
     }
 
     @Override

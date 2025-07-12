@@ -2,6 +2,7 @@ package com.anshumanprajapati.project.uber.uberApp.services.impl;
 
 import com.anshumanprajapati.project.uber.uberApp.services.DistanceService;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.locationtech.jts.geom.Point;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -9,6 +10,7 @@ import org.springframework.web.client.RestClient;
 import java.util.List;
 
 @Service
+@Slf4j
 public class DistanceServiceOSRMImpl implements DistanceService {
     //https://project-osrm.org/docs/v5.24.0/api/#general-options
 
@@ -19,12 +21,15 @@ public class DistanceServiceOSRMImpl implements DistanceService {
 
         try {
             String uri = src.getX()+","+src.getY()+";"+dest.getX()+","+dest.getY();
-            OSRMResponseDto responseDto = RestClient.builder()
+            RestClient.ResponseSpec response = RestClient.builder()
                     .baseUrl(OSRM_API_BASE_URL)
                     .build()
                     .get()
                     .uri(uri)
-                    .retrieve()
+                    .retrieve();
+            log.info("OSRM API URL: {}", OSRM_API_BASE_URL + uri);
+            log.info("OSRM API Response: {}", response);
+            OSRMResponseDto responseDto = response
                     .body(OSRMResponseDto.class);
 
             return responseDto.getRoutes().get(0).getDistance() / 1000.0;
