@@ -1,10 +1,12 @@
 package com.anshumanprajapati.project.uber.uberApp.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.locationtech.jts.geom.Point;
 
-@Data
+@Getter
+@Setter
 @Entity
 public class Driver {
 
@@ -12,11 +14,11 @@ public class Driver {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double rating;
-
     @OneToOne
     @JoinColumn(name="user_id")
     private User user;
+
+    private Double rating;
 
     private Boolean available;
 

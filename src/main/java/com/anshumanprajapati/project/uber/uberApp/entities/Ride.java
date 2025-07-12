@@ -1,17 +1,19 @@
 package com.anshumanprajapati.project.uber.uberApp.entities;
 
 import com.anshumanprajapati.project.uber.uberApp.enums.PaymentMethod;
-import com.anshumanprajapati.project.uber.uberApp.enums.RideRequestStatus;
 import com.anshumanprajapati.project.uber.uberApp.enums.RideStatus;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Ride {
 
     @Id

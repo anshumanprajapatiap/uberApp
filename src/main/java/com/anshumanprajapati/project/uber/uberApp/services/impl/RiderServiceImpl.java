@@ -14,6 +14,7 @@ import com.anshumanprajapati.project.uber.uberApp.repositories.RiderRepository;
 import com.anshumanprajapati.project.uber.uberApp.services.RiderService;
 import com.anshumanprajapati.project.uber.uberApp.strategies.DriverMatchingStrategy;
 import com.anshumanprajapati.project.uber.uberApp.strategies.RideFareCalculationStrategy;
+import com.anshumanprajapati.project.uber.uberApp.strategies.RideStrategyManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -26,13 +27,8 @@ import java.util.List;
 @Slf4j
 public class RiderServiceImpl implements RiderService {
 
-
     private final ModelMapper modelMapper;
-
-    private final RideFareCalculationStrategy rideFareCalculationStrategy;
-
-    private final DriverMatchingStrategy driverMatchingStrategy;
-
+    private final RideStrategyManager rideStrategyManager;
     private final RideRequestRepository rideRequestRepository;
     private final RiderRepository riderRepository;
 
@@ -41,16 +37,18 @@ public class RiderServiceImpl implements RiderService {
         Rider rider = getCurrentRider();
         RideRequest rideRequest = modelMapper.map(rideRequestDto, RideRequest.class);
         rideRequest.setRideRequestStatus(RideRequestStatus.PENDING);
-
-        double fare = rideFareCalculationStrategy.calculateFare(rideRequest);
-        rideRequest.setFare(fare);
         rideRequest.setRider(rider);
 
-        RideRequest savedRideRequest = rideRequestRepository.save(rideRequest);
+        double fare = rideStrategyManager.getRideFareCalculationStrategy().calculateFare(rideRequest);
+        rideRequest.setFare(fare);
 
-        List<Driver> drivers = driverMatchingStrategy.findMatchingDriver(rideRequest);
+//        RideRequest savedRideRequest = rideRequestRepository.save(rideRequest);
 
-        return modelMapper.map(savedRideRequest, RideRequestDto.class);
+        List<Driver> drivers = rideStrategyManager.getDriverMatchingStrategy(rider.getRating()).findMatchingDriver(rideRequest);
+
+        // TODO : Send notification to all the drivers about this ride request
+
+        return modelMapper.map(rideRequest, RideRequestDto.class);
     }
 
     @Override

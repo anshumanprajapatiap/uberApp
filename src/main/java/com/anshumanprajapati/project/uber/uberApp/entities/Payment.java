@@ -18,13 +18,13 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double amount;
-
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
 
     @OneToOne(fetch = FetchType.LAZY)
     private Ride ride;
+
+    private Double amount;
 
     @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;

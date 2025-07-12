@@ -17,10 +17,10 @@ public class Rider {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double rating;
-
     @OneToOne
     @JoinColumn(name="user_id")
     private User user;
+
+    private Double rating;
 
 }
