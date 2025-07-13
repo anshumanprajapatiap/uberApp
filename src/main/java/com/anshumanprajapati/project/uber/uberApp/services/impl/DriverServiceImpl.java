@@ -3,12 +3,14 @@ package com.anshumanprajapati.project.uber.uberApp.services.impl;
 import com.anshumanprajapati.project.uber.uberApp.dto.DriverDto;
 import com.anshumanprajapati.project.uber.uberApp.dto.RideDto;
 import com.anshumanprajapati.project.uber.uberApp.entities.Driver;
+import com.anshumanprajapati.project.uber.uberApp.entities.Payment;
 import com.anshumanprajapati.project.uber.uberApp.entities.Ride;
 import com.anshumanprajapati.project.uber.uberApp.entities.RideRequest;
 import com.anshumanprajapati.project.uber.uberApp.enums.RideRequestStatus;
 import com.anshumanprajapati.project.uber.uberApp.enums.RideStatus;
 import com.anshumanprajapati.project.uber.uberApp.repositories.DriverRepository;
 import com.anshumanprajapati.project.uber.uberApp.services.DriverService;
+import com.anshumanprajapati.project.uber.uberApp.services.PaymentService;
 import com.anshumanprajapati.project.uber.uberApp.services.RideRequestService;
 import com.anshumanprajapati.project.uber.uberApp.services.RideService;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +30,7 @@ public class DriverServiceImpl implements DriverService {
     private final DriverRepository driverRepository;
     private final RideService rideService;
     private final ModelMapper modelMapper;
+    private final PaymentService paymentService;;
 
     @Override
     @Transactional
@@ -68,6 +71,7 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
+    @Transactional
     public RideDto startRide(Long rideId, String otp) {
         Ride ride = rideService.getRideById(rideId);
         Driver currentDriver = getCurrentDriver();
@@ -83,10 +87,13 @@ public class DriverServiceImpl implements DriverService {
         }
         ride.setStartedAt(LocalDateTime.now());
         Ride savedRide = rideService.updateRideStatus(ride, RideStatus.ONGOING);
+        Payment payment = paymentService.createPayment(savedRide);
+
         return modelMapper.map(savedRide, RideDto.class);
     }
 
     @Override
+    @Transactional
     public RideDto endRide(Long rideId) {
         Ride ride = rideService.getRideById(rideId);
         Driver currentDriver = getCurrentDriver();
@@ -98,16 +105,18 @@ public class DriverServiceImpl implements DriverService {
             throw new IllegalStateException("Ride is not in confirmed status");
         }
 
-        // TODO Payment and wallet update logic here
 
         ride.setEndedAt(LocalDateTime.now());
         Ride savedRide = rideService.updateRideStatus(ride, RideStatus.ENDED);
         Driver savedDriver = updateDriverAvailability(currentDriver, true);
+
+        paymentService.processPayment(ride);
+
         return modelMapper.map(savedRide, RideDto.class);
     }
 
     @Override
-    public RideDto rateRide(Long rideId, Integer rating) {
+    public RideDto rateRider(Long rideId, Integer rating) {
         Ride ride = rideService.getRideById(rideId);
         Driver currentDriver = getCurrentDriver();
 
