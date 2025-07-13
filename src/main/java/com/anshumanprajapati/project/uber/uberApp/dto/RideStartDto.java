@@ -1,6 +1,6 @@
 package com.anshumanprajapati.project.uber.uberApp.dto;
 
-import lombok.*;
+import lombok.Data;
 
 @Data
 public class RideStartDto {

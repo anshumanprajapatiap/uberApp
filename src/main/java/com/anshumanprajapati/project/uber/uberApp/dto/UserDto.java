@@ -1,7 +1,9 @@
 package com.anshumanprajapati.project.uber.uberApp.dto;
 
 import com.anshumanprajapati.project.uber.uberApp.enums.Role;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Set;
 

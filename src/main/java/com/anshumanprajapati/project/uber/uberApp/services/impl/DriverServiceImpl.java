@@ -4,7 +4,6 @@ import com.anshumanprajapati.project.uber.uberApp.dto.DriverDto;
 import com.anshumanprajapati.project.uber.uberApp.dto.RideDto;
 import com.anshumanprajapati.project.uber.uberApp.dto.RiderDto;
 import com.anshumanprajapati.project.uber.uberApp.entities.Driver;
-import com.anshumanprajapati.project.uber.uberApp.entities.Payment;
 import com.anshumanprajapati.project.uber.uberApp.entities.Ride;
 import com.anshumanprajapati.project.uber.uberApp.entities.RideRequest;
 import com.anshumanprajapati.project.uber.uberApp.enums.RideRequestStatus;

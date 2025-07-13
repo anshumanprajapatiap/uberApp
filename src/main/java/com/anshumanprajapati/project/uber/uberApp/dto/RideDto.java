@@ -3,7 +3,7 @@ package com.anshumanprajapati.project.uber.uberApp.dto;
 
 import com.anshumanprajapati.project.uber.uberApp.enums.PaymentMethod;
 import com.anshumanprajapati.project.uber.uberApp.enums.RideStatus;
-import lombok.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 

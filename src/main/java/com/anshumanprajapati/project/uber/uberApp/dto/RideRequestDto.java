@@ -3,7 +3,6 @@ package com.anshumanprajapati.project.uber.uberApp.dto;
 import com.anshumanprajapati.project.uber.uberApp.enums.PaymentMethod;
 import com.anshumanprajapati.project.uber.uberApp.enums.RideRequestStatus;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

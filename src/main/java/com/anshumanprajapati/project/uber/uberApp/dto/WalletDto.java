@@ -1,6 +1,6 @@
 package com.anshumanprajapati.project.uber.uberApp.dto;
 
-import lombok.*;
+import lombok.Data;
 
 import java.util.List;
 

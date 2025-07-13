@@ -2,7 +2,8 @@ package com.anshumanprajapati.project.uber.uberApp.dto;
 
 import com.anshumanprajapati.project.uber.uberApp.enums.TransactionMethod;
 import com.anshumanprajapati.project.uber.uberApp.enums.TransactionType;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
