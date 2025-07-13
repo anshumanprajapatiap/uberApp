@@ -2,7 +2,6 @@ package com.anshumanprajapati.project.uber.uberApp.controllers;
 
 import com.anshumanprajapati.project.uber.uberApp.dto.RideDto;
 import com.anshumanprajapati.project.uber.uberApp.dto.RideStartDto;
-import com.anshumanprajapati.project.uber.uberApp.enums.RideStatus;
 import com.anshumanprajapati.project.uber.uberApp.services.DriverService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

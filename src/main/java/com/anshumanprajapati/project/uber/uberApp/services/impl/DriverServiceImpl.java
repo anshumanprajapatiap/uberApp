@@ -18,9 +18,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.print.Pageable;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -133,7 +131,7 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public Page<RideDto> getAllMyRides(PageRequest pageRequest) {
         Driver currentDriver = getCurrentDriver();
-        return rideService.getAllRidesOfDriver(currentDriver.getId(), pageRequest).map(
+        return rideService.getAllRidesOfDriver(currentDriver, pageRequest).map(
                 ride -> modelMapper.map(ride, RideDto.class)
         );
     }

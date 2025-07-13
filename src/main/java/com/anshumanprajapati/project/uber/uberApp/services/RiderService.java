@@ -1,6 +1,5 @@
 package com.anshumanprajapati.project.uber.uberApp.services;
 
-import com.anshumanprajapati.project.uber.uberApp.dto.DriverDto;
 import com.anshumanprajapati.project.uber.uberApp.dto.RideDto;
 import com.anshumanprajapati.project.uber.uberApp.dto.RideRequestDto;
 import com.anshumanprajapati.project.uber.uberApp.dto.RiderDto;
@@ -8,8 +7,6 @@ import com.anshumanprajapati.project.uber.uberApp.entities.Rider;
 import com.anshumanprajapati.project.uber.uberApp.entities.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-
-import java.util.List;
 
 
 public interface RiderService {
