@@ -1,17 +1,15 @@
 package com.anshumanprajapati.project.uber.uberApp.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 public class PointDto {
     private double[] coordinates;
     private String type = "Point";
 
+    public PointDto(double[] coordinates) {
+        this.coordinates = coordinates;
+    }
 
 }

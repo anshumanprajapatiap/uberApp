@@ -1,16 +1,10 @@
 package com.anshumanprajapati.project.uber.uberApp.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class WalletDto {
 
     private Long id;

@@ -12,6 +12,10 @@ import org.locationtech.jts.geom.Point;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(indexes = {
+        @Index(name = "idx_driver_vehicle_id", columnList = "vehicleId"),
+        @Index(name = "idx_driver_available", columnList = "available")
+})
 public class Driver {
 
     @Id

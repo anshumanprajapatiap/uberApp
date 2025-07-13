@@ -2,19 +2,19 @@ package com.anshumanprajapati.project.uber.uberApp.entities;
 
 import com.anshumanprajapati.project.uber.uberApp.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="app_user")
+@Table(name="app_user", indexes = {
+        @Index(name = "idx_user_email", columnList = "email")
+})
 public class User {
 
     @Id

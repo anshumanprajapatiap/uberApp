@@ -2,6 +2,7 @@ package com.anshumanprajapati.project.uber.uberApp.services.impl;
 
 import com.anshumanprajapati.project.uber.uberApp.dto.DriverDto;
 import com.anshumanprajapati.project.uber.uberApp.dto.RideDto;
+import com.anshumanprajapati.project.uber.uberApp.dto.RiderDto;
 import com.anshumanprajapati.project.uber.uberApp.entities.Driver;
 import com.anshumanprajapati.project.uber.uberApp.entities.Payment;
 import com.anshumanprajapati.project.uber.uberApp.entities.Ride;
@@ -9,10 +10,7 @@ import com.anshumanprajapati.project.uber.uberApp.entities.RideRequest;
 import com.anshumanprajapati.project.uber.uberApp.enums.RideRequestStatus;
 import com.anshumanprajapati.project.uber.uberApp.enums.RideStatus;
 import com.anshumanprajapati.project.uber.uberApp.repositories.DriverRepository;
-import com.anshumanprajapati.project.uber.uberApp.services.DriverService;
-import com.anshumanprajapati.project.uber.uberApp.services.PaymentService;
-import com.anshumanprajapati.project.uber.uberApp.services.RideRequestService;
-import com.anshumanprajapati.project.uber.uberApp.services.RideService;
+import com.anshumanprajapati.project.uber.uberApp.services.*;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -31,6 +29,7 @@ public class DriverServiceImpl implements DriverService {
     private final RideService rideService;
     private final ModelMapper modelMapper;
     private final PaymentService paymentService;;
+    private final RatingService ratingService;
 
     @Override
     @Transactional
@@ -65,7 +64,7 @@ public class DriverServiceImpl implements DriverService {
         }
 
         rideService.updateRideStatus(ride, RideStatus.CANCELLED);
-        Driver savedDriver = updateDriverAvailability(currentDriver, false);
+        updateDriverAvailability(currentDriver, true);
 
         return modelMapper.map(ride, RideDto.class);
     }
@@ -87,7 +86,8 @@ public class DriverServiceImpl implements DriverService {
         }
         ride.setStartedAt(LocalDateTime.now());
         Ride savedRide = rideService.updateRideStatus(ride, RideStatus.ONGOING);
-        Payment payment = paymentService.createPayment(savedRide);
+        paymentService.createPayment(savedRide);
+        ratingService.createNewRating(savedRide);
 
         return modelMapper.map(savedRide, RideDto.class);
     }
@@ -116,7 +116,7 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public RideDto rateRider(Long rideId, Integer rating) {
+    public RiderDto rateRider(Long rideId, Integer rating) {
         Ride ride = rideService.getRideById(rideId);
         Driver currentDriver = getCurrentDriver();
 
@@ -126,9 +126,7 @@ public class DriverServiceImpl implements DriverService {
         if (!ride.getRideStatus().equals(RideStatus.ENDED)) {
             throw new IllegalStateException("Ride is not in confirmed status");
         }
-        // TODO: Implement rating logic
-
-        return null;
+        return ratingService.rateRider(ride, rating);
     }
 
     @Override
@@ -155,5 +153,10 @@ public class DriverServiceImpl implements DriverService {
     public Driver updateDriverAvailability(Driver driver, boolean available) {
         driver.setAvailable(available);
         return driverRepository.save(driver);
+    }
+
+    @Override
+    public Driver createNewDriver(Driver createDriver) {
+       return driverRepository.save(createDriver);
     }
 }
