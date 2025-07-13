@@ -6,6 +6,7 @@ import com.anshumanprajapati.project.uber.uberApp.dto.RiderDto;
 import com.anshumanprajapati.project.uber.uberApp.entities.Driver;
 import com.anshumanprajapati.project.uber.uberApp.entities.Ride;
 import com.anshumanprajapati.project.uber.uberApp.entities.RideRequest;
+import com.anshumanprajapati.project.uber.uberApp.entities.User;
 import com.anshumanprajapati.project.uber.uberApp.enums.RideRequestStatus;
 import com.anshumanprajapati.project.uber.uberApp.enums.RideStatus;
 import com.anshumanprajapati.project.uber.uberApp.repositories.DriverRepository;
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -144,8 +146,9 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public Driver getCurrentDriver(){
-        return driverRepository.findById(2L)
-                .orElseThrow(() -> new IllegalStateException("Driver not found"));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return driverRepository.findByUser(user)
+                .orElseThrow(() -> new IllegalStateException("Driver not found with id: "+ user.getId()));
     }
 
     @Override
