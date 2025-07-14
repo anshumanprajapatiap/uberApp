@@ -26,15 +26,15 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> login(@RequestBody LoginRequestDto loginRequestDto,
                                                   HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
-        String[] tokens = authService.login(loginRequestDto.getEmail(), loginRequestDto.getPassword());
-        return ResponseEntity.ok(new LoginResponseDto(tokens[0]));
+        LoginResponseDto responseDto = authService.login(loginRequestDto.getEmail(), loginRequestDto.getPassword());
+        return ResponseEntity.ok(responseDto);
     }
     @PostMapping("/signup")
     public UserDto signUp(@RequestBody SignupDto signupDto){
         return authService.signup(signupDto);
     }
 
-    @Secured("ROLE_ADMIN")
+//    @Secured("ROLE_ADMIN")
     @PostMapping("/onBoardNewDriver/{userId}")
     public ResponseEntity<DriverDto> onBoardNewDriver(@PathVariable Long userId, @RequestBody OnboardDriverDto onboardDriverDto){
         DriverDto driver =  authService.onboardNewDriver(userId, onboardDriverDto.getVehicleId());
@@ -51,6 +51,6 @@ public class AuthController {
 
         String accessToken = authService.refreshToken(refreshToken);
 
-        return ResponseEntity.ok(new LoginResponseDto(accessToken));
+        return ResponseEntity.ok(new LoginResponseDto(accessToken, refreshToken, null));
     }
 }

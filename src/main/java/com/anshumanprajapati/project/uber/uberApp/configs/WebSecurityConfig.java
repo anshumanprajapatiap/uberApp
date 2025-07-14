@@ -2,7 +2,7 @@ package com.anshumanprajapati.project.uber.uberApp.configs;
 
 import com.anshumanprajapati.project.uber.uberApp.security.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.util.SessionConfig;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -20,9 +20,8 @@ public class WebSecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
 
-    private static final String[] PUBLIC_ENDPOINTS = {
-            "/api/v1/auth/**", "/swagger-ui/**", "/v3/api-docs/**",
-    };
+    @Value("${public.allowed-endpoints}")
+    private String[] PUBLIC_ENDPOINTS;
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{

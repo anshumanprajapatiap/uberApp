@@ -1,6 +1,7 @@
 package com.anshumanprajapati.project.uber.uberApp.services.impl;
 
 import com.anshumanprajapati.project.uber.uberApp.dto.DriverDto;
+import com.anshumanprajapati.project.uber.uberApp.dto.LoginResponseDto;
 import com.anshumanprajapati.project.uber.uberApp.dto.SignupDto;
 import com.anshumanprajapati.project.uber.uberApp.dto.UserDto;
 import com.anshumanprajapati.project.uber.uberApp.entities.Driver;
@@ -41,14 +42,15 @@ public class AuthServiceImpl implements AuthService {
     private final JWTService jwtService;
 
     @Override
-    public String[] login(String email, String password) {
+    public LoginResponseDto login(String email, String password) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(email, password)
         );
         User user = (User) authentication.getPrincipal();
         String accessToken = jwtService.generateAccessToken(user);
         String refreshToken = jwtService.generateRefreshToken(user);
-        return new String[]{accessToken, refreshToken};
+
+        return new LoginResponseDto(accessToken, refreshToken, user.getRoles());
     }
 
     @Override
