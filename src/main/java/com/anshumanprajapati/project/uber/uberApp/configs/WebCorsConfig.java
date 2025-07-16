@@ -9,8 +9,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebCorsConfig {
 
-    @Value("${cors.allowed-origins}")
-    private String[] allowedOrigins;
+//    @Value("${cors.allowed-origins}")
+    private String[] allowedOrigins = new String[] {
+            "http://localhost:3001", // React app
+            "https://your-production-domain.com" // Production domain
+    };
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {

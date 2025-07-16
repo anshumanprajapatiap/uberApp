@@ -20,8 +20,14 @@ public class WebSecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
 
-    @Value("${public.allowed-endpoints}")
-    private String[] PUBLIC_ENDPOINTS;
+//    @Value("${public.allowed-endpoints}")
+    private String[] PUBLIC_ENDPOINTS = new String[] {
+            "/actuator",
+            "/api/v1/auth/**",
+            "/v3/api-docs/**", // OpenAPI documentation
+            "/swagger-ui/**", // Swagger UI
+            "/swagger-ui.html" // Swagger UI HTML
+    };
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{

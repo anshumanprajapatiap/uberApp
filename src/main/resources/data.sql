@@ -1,4 +1,8 @@
 INSERT INTO app_user (name, email, password) VALUES
+
+('Anshuman Prajapati', 'admin@example.com','$2a$10$dGNDtUKaH.dG8/oIHD/HgOb/ZGOG.slmxg7i9rKEZPe2cetvey24u'),
+('Anshuman Prajapati', 'driver@example.com','$2a$10$dGNDtUKaH.dG8/oIHD/HgOb/ZGOG.slmxg7i9rKEZPe2cetvey24u'),
+('Anshuman Prajapati', 'rider@example.com','$2a$10$dGNDtUKaH.dG8/oIHD/HgOb/ZGOG.slmxg7i9rKEZPe2cetvey24u'),
 ('Aarav Sharma', 'aarav@gmail.com', 'Password'),
 ('Vivaan Khanna', 'vivaan.khanna@example.com', '$2a$10$examplePasswordHash2'),
 ('Aditya Verma', 'aditya.verma@example.com', '$2a$10$examplePasswordHash3'),
@@ -42,10 +46,11 @@ INSERT INTO app_user (name, email, password) VALUES
 
 INSERT INTO user_roles (user_id, roles) VALUES
 (1, 'RIDER'),
+(1, 'DRIVER'),
+(1, 'ADMIN'),
 (2, 'RIDER'),
 (2, 'DRIVER'),
 (3, 'RIDER'),
-(3, 'DRIVER'),
 (4, 'RIDER'),
 (4, 'DRIVER'),
 (5, 'RIDER'),
@@ -119,14 +124,18 @@ INSERT INTO user_roles (user_id, roles) VALUES
 (39, 'RIDER'),
 (39, 'DRIVER'),
 (40, 'RIDER'),
-(40, 'DRIVER');
+(40, 'DRIVER'),
+(41, 'DRIVER'),
+(42, 'DRIVER'),
+(43, 'DRIVER');
 
 INSERT INTO rider (user_id, rating) VALUES
-(1, 4.9);
+(1, 4.9),
+(2, 4.9),
+(3, 4.9);
 
 INSERT INTO driver (user_id, rating, available, current_location, vehicle_id) VALUES
 (2, 4.7, true, ST_GeomFromText('POINT(77.1025 28.7041)', 4326), 'HR01AB1234'),
-(3, 4.8, true, ST_GeomFromText('POINT(77.2167 28.6667)', 4326), 'DL02CD5678'),
 (4, 4.6, true, ST_GeomFromText('POINT(77.2273 28.6353)', 4326), 'UP03EF9012'),
 (5, 4.9, true, ST_GeomFromText('POINT(77.2500 28.5500)', 4326), 'PB04GH3456'),
 (6, 4.3, true, ST_GeomFromText('POINT(77.2000 28.6200)', 4326), 'RJ05IJ7890'),
@@ -163,10 +172,15 @@ INSERT INTO driver (user_id, rating, available, current_location, vehicle_id) VA
 (37, 4.6, true, ST_GeomFromText('POINT(77.2465 28.6419)', 4326), 'AS36ST1234'),
 (38, 4.4, true, ST_GeomFromText('POINT(77.2475 28.6439)', 4326), 'CH37UV5678'),
 (39, 4.7, true, ST_GeomFromText('POINT(77.2485 28.6459)', 4326), 'UA38WX9012'),
-(40, 4.8, true, ST_GeomFromText('POINT(77.2495 28.6479)', 4326), 'HR39YZ3456');
+(40, 4.8, true, ST_GeomFromText('POINT(77.2495 28.6479)', 4326), 'HR39YZ3456'),
+(41, 4.8, true, ST_GeomFromText('POINT(77.2167 28.6667)', 4326), 'DL02CD5678'),
+(42, 4.9, true, ST_GeomFromText('POINT(77.2177 28.6677)', 4326), 'UP03EF9012'),
+(43, 4.6, true, ST_GeomFromText('POINT(77.2187 28.6687)', 4326), 'PB04GH3456');
 
 
 
 INSERT INTO wallet (user_id, balance) VALUES
 (1, 100),
-(2, 500);
+(2, 500),
+(3, 100),
+(4, 500);
