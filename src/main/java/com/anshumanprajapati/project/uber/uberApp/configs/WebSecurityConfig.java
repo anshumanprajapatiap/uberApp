@@ -23,7 +23,7 @@ public class WebSecurityConfig {
 //    @Value("${public.allowed-endpoints}")
     private String[] PUBLIC_ENDPOINTS = new String[] {
             "/actuator",
-            "/api/v1/auth/**",
+            "/api/v1/**",
             "/v3/api-docs/**", // OpenAPI documentation
             "/swagger-ui/**", // Swagger UI
             "/swagger-ui.html" // Swagger UI HTML

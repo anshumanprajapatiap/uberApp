@@ -1,0 +1,662 @@
+{
+  "meta": {
+    "format": "httpie",
+    "version": "1.0.0",
+    "contentType": "collection",
+    "schema": "https://schema.httpie.io/1.0.0.json",
+    "docs": "https://httpie.io/r/help/export-from-httpie",
+    "source": "HTTPie Desktop 2025.2.0"
+  },
+  "entry": {
+    "name": "UberApp",
+    "icon": {
+      "name": "rocket",
+      "color": "gray"
+    },
+    "auth": {
+      "type": "none"
+    },
+    "requests": [
+      {
+        "name": "actuator",
+        "url": "http://localhost:8080/actuator",
+        "method": "GET",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "none",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "v3/api-docs",
+        "url": "http://localhost:8080/v3/api-docs",
+        "method": "GET",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "none",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "swagger-ui/index.html",
+        "url": "http://localhost:8080/swagger-ui/index.html",
+        "method": "GET",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "none",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "auth/signUp",
+        "url": "http://localhost:8080/api/v1/auth/signup",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "{\n  \"name\": \"Anshuman Prajapati\",\n  \"email\": \"admin@example.com\",\n  \"password\": \"example\"\n}",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "auth/login",
+        "url": "http://localhost:8080/api/v1/auth/login",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "{\n  \"email\": \"driver@example.com\",\n  \"password\": \"example\"\n}",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "auth/refresh",
+        "url": "http://localhost:8080/api/v1/auth/login",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "{\n  \"email\": \"anshuman.prajapati@gmail.com\",\n  \"password\": \"Anshuman\"\n}",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "auth/onBoardNewDriver/{userId}",
+        "url": "http://localhost:8080/api/v1/auth/onBoardNewDriver/1",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "bearer",
+          "target": "headers",
+          "credentials": {
+            "username": "",
+            "password": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiI0MSIsImVtYWlsIjoiYW5zaHVtYW4ucHJhamFwYXRpQGdtYWlsLmNvbSIsInJvbGVzIjoiW1JJREVSXSIsImlhdCI6MTc1MjQyMDExNSwiZXhwIjoxNzUyNDIwNzE1fQ.CQW6QCidfTrP-kz0s7kjSLVgtsHzX77khfqxnC2oHVJyCWnTP_ERxHnxXglsJFeT"
+          }
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "{\n  \"vehicleId\": \"MP19ML2025\"\n}",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "riders/myProfile",
+        "url": "http://localhost:8080/api/v1/riders/myProfile",
+        "method": "GET",
+        "headers": [
+          {
+            "name": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIzIiwiZW1haWwiOiJyaWRlckBleGFtcGxlLmNvbSIsInJvbGVzIjoiW1JJREVSXSIsImlhdCI6MTc1MjY5NDg5OCwiZXhwIjoxNzUyNjk1NDk4fQ.Nej_UvWB5u_oBJDYi9rZ4N1qiuvzFRJT6aikA6Z1ppHBaVNHAPhuQMO1CgVAHxn2",
+            "enabled": true
+          }
+        ],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "none"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "riders/myRides",
+        "url": "http://localhost:8080/api/v1/riders/myRides",
+        "method": "GET",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "bearer",
+          "target": "headers",
+          "credentials": {
+            "username": "",
+            "password": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiI0MSIsImVtYWlsIjoiYW5zaHVtYW4ucHJhamFwYXRpQGdtYWlsLmNvbSIsInJvbGVzIjoiW1JJREVSXSIsImlhdCI6MTc1MjQxOTY2MSwiZXhwIjoxNzUyNDIwMjYxfQ.xR7-9ZyqkDNFzIRslgc5XtuXcin9_m1GUDZeXMO2U_ufuLcXOLBSxUdegaEQcktl"
+          }
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "riders/requestRide",
+        "url": "http://localhost:8080/api/v1/riders/requestRide",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "bearer",
+          "target": "headers",
+          "credentials": {
+            "username": "",
+            "password": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiI0MSIsImVtYWlsIjoiYW5zaHVtYW4ucHJhamFwYXRpQGdtYWlsLmNvbSIsInJvbGVzIjoiW1JJREVSXSIsImlhdCI6MTc1MjQxOTY2MSwiZXhwIjoxNzUyNDIwMjYxfQ.xR7-9ZyqkDNFzIRslgc5XtuXcin9_m1GUDZeXMO2U_ufuLcXOLBSxUdegaEQcktl"
+          }
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "{\n  \"pickupLocation\": {\n    \"coordinates\": [\n      77.11372277071143,\n      28.67691868346759\n    ]\n  },\n  \"dropOffLocation\": {\n    \"coordinates\": [\n      77.38888114041362,\n      28.662167129906052\n    ]\n  },\n  \"paymentMethod\": \"WALLET\"\n}",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "riders/cancelRide",
+        "url": "http://localhost:8080/api/v1/riders/cancelRide/2",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "riders/rateDriver",
+        "url": "http://localhost:8080/api/v1/riders/rateDriver",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "{\n \"rideId\":1,\n  \"rating\": 1\n}",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "riders/rateDriver/{rideId}/{rating}",
+        "url": "http://localhost:8080/api/v1/riders/rateDriver/1/1",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "{\n \"rideId\":1,\n  \"rating\": 1\n}",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "drivers/myProfile",
+        "url": "http://localhost:8080/api/v1/drivers/myProfile",
+        "method": "GET",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "bearer",
+          "target": "headers",
+          "credentials": {
+            "username": "",
+            "password": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiIyIiwiZW1haWwiOiJkcml2ZXJAZXhhbXBsZS5jb20iLCJyb2xlcyI6IltSSURFUiwgRFJJVkVSXSIsImlhdCI6MTc1MjY5Mjg1MCwiZXhwIjoxNzUyNjkzNDUwfQ.SvUiw1ziXyQhenuecfuovm378I9_p9VT1qb8DAdIQj24yGQnkQVzKz40GeIQQxfi"
+          }
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "drivers/myRides",
+        "url": "http://localhost:8080/api/v1/drivers/myRides",
+        "method": "GET",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "drivers/acceptRide/{rideRequestId}",
+        "url": "http://localhost:8080/api/v1/drivers/acceptRide/1",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "bearer",
+          "target": "headers",
+          "credentials": {
+            "username": "",
+            "password": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiI0MSIsImVtYWlsIjoiYW5zaHVtYW4ucHJhamFwYXRpQGdtYWlsLmNvbSIsInJvbGVzIjoiW1JJREVSXSIsImlhdCI6MTc1MjQxOTY2MSwiZXhwIjoxNzUyNDIwMjYxfQ.xR7-9ZyqkDNFzIRslgc5XtuXcin9_m1GUDZeXMO2U_ufuLcXOLBSxUdegaEQcktl"
+          }
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "drivers/startRide/{rideRequestId}",
+        "url": "http://localhost:8080/api/v1/drivers/startRide/1",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "{\n  \"otp\":\"0798\"\n}",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "drivers/endRide/{rideRequestId}",
+        "url": "http://localhost:8080/api/v1/drivers/endRide/1",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "{\n  \"otp\":\"0798\"\n}",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "drivers/canceRide/{rideId}",
+        "url": "http://localhost:8080/api/v1/drivers/cancelRide/1",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "{\n  \"otp\":\"0798\"\n}",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "driver/rateRider",
+        "url": "http://localhost:8080/api/v1/driver/rateRider",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "{\n \"rideId\":1,\n  \"rating\": 1\n}",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "driver/rateRider/{rideId}/{rating}",
+        "url": "http://localhost:8080/api/v1/driver/rateRider/1/1",
+        "method": "POST",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      }
+    ]
+  }
+}
